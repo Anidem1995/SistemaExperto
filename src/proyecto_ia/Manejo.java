@@ -141,14 +141,33 @@ public class Manejo {
             //m.Leer_Secuencial_Maestro();
             //m.guardaHechos();
             bh = m.extraeHechos();
+            String bhs = "{";
+            for(int i = 0; i < bh.size(); i++)
+            {
+                bhs += bh.get(i) + ", ";
+            }
+            bhs += "}";
+            System.out.println("Base de hechos: \n" + bhs);
             bc = m.extraerReglas();
             cc = m.generaconjuntoConflicto(bh, bc);
+            String ccs = "[";
+            for(int j = 0; j < cc.size(); j++)
+            {
+                ccs += cc.get(j).toString() + "\n";
+            }
+            ccs += "]";
             boolean primerLanzamiento = true;
             boolean contenida = contenida(bh, meta);
             
             while(cc.size()!= 0 && !contenida)
             {
                 cc = m.generaconjuntoConflicto(bh, bc);
+                String ccss = "[";
+                for(int j = 0; j < cc.size(); j++)
+                {
+                    ccs += cc.get(j).toString() + "\n";
+                }
+                ccss += "]";
                 if(cc.size() != 0)
                 {
                     if(primerLanzamiento)
@@ -158,6 +177,13 @@ public class Manejo {
                     }
                     else seleccion = m.seleccionaRegla(cc, primerLanzamiento);
                     bh.add(seleccion);
+                    String bhss = "{";
+                    for(int i = 0; i < bh.size(); i++)
+                    {
+                        bhs += bh.get(i) + ", ";
+                    }
+                    bhs += "}";
+                    System.out.println("Base de hechos: \n" + bhs);
                     contenida = contenida(bh, meta);
                 }
             }

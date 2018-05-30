@@ -24,6 +24,12 @@ public class Regla {
         this.disparada = false;
     }
     
+    @Override
+    public String toString()
+    {
+        return "{Regla numero: " + this.n + ", A1 : " + this.a1 + ", A2 : " + this.a2 + ", A3 : " + this.a3 + ", A4 : " + this.a4 +  ", C : " + this.c + "}";
+    }
+    
     public Regla(){}
     
     public void setDisparada(boolean disparada){
